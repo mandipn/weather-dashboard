@@ -18,7 +18,7 @@ var APIkey = "a17e1499228be1f9c294ac18b234c7d7";
 var cityList = [];
 
 // Find current date and display in title
-var currentDate = moment().format('L');
+var currentDate = moment().format("DD/MM/YYYY");
 $("#current-date").text("(" + currentDate + ")");
 
 // Check if search history exists when page loads
@@ -91,7 +91,7 @@ function currentConditionsRequest(searchValue) {
         currentTemp.text(response.main.temp);
         currentTemp.append("&deg;F");
         currentHumidity.text(response.main.humidity + "%");
-        currentWindSpeed.text(response.wind.speed + "MPH");
+        currentWindSpeed.text(response.wind.speed + " MPH");
 
         var lat = response.coord.lat;
         var lon = response.coord.lon;
@@ -109,7 +109,7 @@ function currentConditionsRequest(searchValue) {
             $('#five-day-forecast').empty();
             for (var i = 1; i < response.list.length; i+=8) {
 
-                var forecastDateString = moment(response.list[i].dt_txt).format("L");
+                var forecastDateString = moment(response.list[i].dt_txt).format("DD/MM/YYYY");
                 console.log(forecastDateString);
 
                 var forecastCol = $("<div class='col-12 col-md-6 col-lg forecast-day mb-3'>");
@@ -138,9 +138,9 @@ function currentConditionsRequest(searchValue) {
                 forecastTemp.text(response.list[i].main.temp);
                 forecastTemp.prepend("Temp: ");
                 forecastTemp.append("&deg;F");
-                forecastWind.text(response.list[i].main.wind);
+                forecastWind.text(response.list[i].wind.speed);
                 forecastWind.prepend("Wind: ");
-                forecastWind.append("&deg;F");
+                forecastWind.append(" MPH");
                 forecastHumidity.text(response.list[i].main.humidity);
                 forecastHumidity.prepend("Humidity: ");
                 forecastHumidity.append("%");

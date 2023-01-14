@@ -64,7 +64,6 @@ clearHistoryButton.on("click", function(){
 // Clicking on a button in the search history sidebar
 // will populate the dashboard with info on that city
 searchHistoryList.on("click","li.city-btn", function(event) {
-    // console.log($(this).data("value"));
     var value = $(this).data("value");
     currentConditionsRequest(value);
     searchHistory(value); 
@@ -145,10 +144,7 @@ function currentConditionsRequest(searchValue) {
                 forecastHumidity.prepend("Humidity: ");
                 forecastHumidity.append("%");
                 
-                // console.log(response.list[i].dt_txt);
-                // console.log(response.list[i].main.temp);
-                // console.log(response.list[i].main.humidity);
-
+                
             }
         });
 
@@ -191,7 +187,7 @@ function searchHistory(searchValue) {
             weatherContent.removeClass("hide");
         }
     }
-    // console.log(cityList);
+    
 }
 
 // List the array into the search history sidebar
@@ -218,7 +214,6 @@ function initalizeHistory() {
     if (localStorage.getItem("cities")) {
         cityList = JSON.parse(localStorage.getItem("cities"));
         var lastIndex = cityList.length - 1;
-        // console.log(cityList);
         listArray();
         // Display the last city viewed
         // if page is refreshed
@@ -236,3 +231,5 @@ function showClear() {
         clearHistoryButton.removeClass("hide");
     }
 }
+
+// Mandip Nijor
